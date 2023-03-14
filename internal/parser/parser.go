@@ -3,22 +3,24 @@ package parser
 import (
 	"github.com/PuerkitoBio/goquery"
 	"strings"
-	"fmt"
 	"regexp"
 )
 
 
 
-func Parse(text string) {
+func Parse(text string) []string {
 
 	doc, _ := goquery.NewDocumentFromReader(strings.NewReader(text))
 
-	
+	costs := make([]string,0)
+
 	doc.Find(".vacancy-serp-item-body").Each( func(i int, el *goquery.Selection) {
 		cost := el.Find("[data-qa=vacancy-serp__vacancy-compensation]").Text()
-		processCost(cost)
-	});
 
+		costs = append(costs,processCost(cost))
+	});
+	
+	return costs
 }
 
 func processCost(cost string) string {

@@ -12,6 +12,6 @@ func Start() {
 	response, _ := grabber.Grab("https://hh.ru/search/vacancy?text=golang&area=1")
 
 	
-	parser.Parse(response)
+	fmt.Println(parser.Parse(response))
 	
 }
