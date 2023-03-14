@@ -29,6 +29,5 @@ func processCost(cost string) string {
 
 	partedCost := formatted.FindAllString(cost, 2)
 	
-	fmt.Println(strings.Join(partedCost, ""))
-	return ""	
+	return strings.Join(partedCost, "")	
 }
